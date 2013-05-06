@@ -241,7 +241,7 @@
 <script src="assets/bootstrap/js/bootstrap.js"></script>
 <script>
 $(function() {
-  $('h3').click(function() {
+  $('h3, h4, h5').click(function() {
     $this = $(this);
     var header = $this.text() + ' ' + $this.nextAll('.distance').text();
     var body = $this.nextAll('.preview').html();
@@ -249,6 +249,17 @@ $(function() {
     $('#body').html(body);
     $('#modal').modal();
   });
+
+  var today = 'May ' + new Date().getDate();
+  var todayElement = $("h4:contains('" + today + "')").css('color', 'red');
+
+  // Scroll to todoy
+  if (todayElement.length) {
+    $('body').animate({
+       scrollTop: todayElement.offset().top - 60
+    }, 2000);
+  }
+
 });
 </script>
 </body>
