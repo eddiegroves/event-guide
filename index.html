@@ -17,6 +17,9 @@
     color: rgb(255, 82, 0);
     font-weight: bold;
   }
+  .stage-profile {
+    margin: 15px 0;
+  }
   .span3 {
     min-height: 200px;
   }
@@ -28,25 +31,33 @@
   <div class="row">
     <div class="span3">
       <h3>Stage 1</h3>
-      <h4></h4>
+      <h4>29 Jun 2013</h4>
       <h5>Porto Vecchio to Bastia</h5>
-      <h5></h5>
+      <h5 class="distance">212km</h5>
       <p class="preview">
       Doing away with the traditional prologue, or short time-trial, is designed to showcase the stunning beauty of Corsica but also make the first wearer of the 100th yellow jersey work for the privilege.
       <br/><br/>
       The race opener is 212 km long and undulates for the first third of the course. After the early breakaways, the teams with top sprinters, like Mark Cavendish, Andre Greipel and Matt Goss will be expected to take over the chase in a bid to set up an anticipated bunch sprint finish in Bastia.
+      <img class="stage-profile" src="assets/images/stage-profiles/stage-1.jpg" alt="Stage 1 Profile" />
+      </p>
+      <p class="sbs">
+      SAT 29 JUN 10:00PM AEST
       </p>
     </div>
 
     <div class="span3">
       <h3>Stage 2</h3>
-      <h4></h4>
+      <h4>30 Jun 2013</h4>
       <h5>Bastia to Ajaccio</h5>
-      <h5></h5>
+      <h5 class="distance">145km</h5>
       <p class="preview">
       The overnight race leader will have to dig deep if he is to keep the yellow jersey at the end of stage two. The second day on the "Island of Beauty" climbs steadily from the start and drags the peloton over two mountain passes, of 5.2 km and 4.6 km-long respectively, before a long descent towards Ajaccio.
       <br/><br/>
       To maintain the suspense and give the sprinters food for thought, organisers have thrown a small climb 12 km before the finish line into the mix.
+      <img class="stage-profile" src="assets/images/stage-profiles/stage-2.jpg" alt="Stage 2 Profile" />
+      </p>
+      <p class="sbs">
+      SUN 30 JUN 10:00PM AEST
       </p>
     </div>
 
@@ -289,23 +300,15 @@
 $(function() {
   $('h3, h4, h5').click(function() {
     $this = $(this);
-    var header = $this.text() + ' ' + $this.nextAll('.distance').text();
-    var body = $this.nextAll('.preview').html();
+    var header = $this.prevAll('h3').text() + ' ' + $this.nextAll('.distance').text();
+    var body = $this.nextAll('.preview').html() + '<p class="sbs">' + $this.nextAll('.sbs').html() + '</p>';
     $('#header').text(header);
     $('#body').html(body);
     $('#modal').modal();
   });
 
-  var today = 'May ' + new Date().getDate();
-  var todayElement = $("h4:contains('" + today + "')").css('color', 'red');
-
-  // Scroll to todoy
-  if (todayElement.length) {
-    $('body').animate({
-       scrollTop: todayElement.offset().top - 60
-    }, 2000);
-  }
-
+  var today = 'July ' + new Date().getDate();
+  $("h4:contains('" + today + "')").css('color', 'red');
 });
 </script>
 </body>
